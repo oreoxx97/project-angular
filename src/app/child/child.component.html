@@ -1,0 +1,61 @@
+<h1>Component One</h1>
+<br />
+<form [formGroup]="myForm">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+    <div
+      *ngIf="
+        myForm.get('name')!.invalid &&
+        (myForm.get('name')!.dirty || myForm.get('name')!.touched)
+      "
+    >
+      <div *ngIf="myForm.get('name').errors.required">Name is required.</div>
+    </div>
+  </label>
+  <br />
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastname" />
+    <div
+      *ngIf="
+        myForm.get('lastname')!.invalid &&
+        (myForm.get('lastname')!.dirty || myForm.get('lastname')!.touched)
+      "
+    >
+      <div *ngIf="myForm.get('name').errors.required">
+        Last Name is required.
+      </div>
+    </div>
+  </label>
+  <br />
+  <label>
+    Date:
+    <input type="date" formControlName="date" />
+  </label>
+  <br />
+  <label>
+    Age:
+    <span>{{ myForm.controls.age.value }}</span>
+  </label>
+  <br />
+  <label>
+    Gender:
+    <input type="text" formControlName="gender" />
+    <div
+      *ngIf="
+        myForm.get('gender')!.invalid &&
+        (myForm.get('gender')!.dirty || myForm.get('gender')!.touched)
+      "
+    >
+      <div *ngIf="myForm.get('name').errors.required">Gender is required.</div>
+    </div>
+  </label>
+  <br />
+  <label>
+    Tel:
+    <input type="number" formControlName="tel" />
+  </label>
+  <br />
+  <button (click)="sendDataForm()" type="submit" [disabled]="myForm.invalid">Send Data My Form</button>
+</form>
